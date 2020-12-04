@@ -21,5 +21,9 @@ namespace CRUD_APP.Controllers
             IEnumerable<Category> objList = _db.Categories;
             return View(objList);
         }
+        public IActionResult Create()
+        {
+            return View();
+        }
     }
 }
