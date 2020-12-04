@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using CRUD_APP.Data;
+using CRUD_APP.Models;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,9 +10,16 @@ namespace CRUD_APP.Controllers
 {
     public class CategoryController : Controller
     {
+        private readonly ApplicationDbContext _db;
+
+        public CategoryController(ApplicationDbContext db)
+        {
+            _db = db;
+        }
         public IActionResult Index()
         {
-            return View();
+            IEnumerable<Category> objList = _db.Categories;
+            return View(objList);
         }
     }
 }
